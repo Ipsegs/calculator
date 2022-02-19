@@ -12,7 +12,7 @@ class CalculatorApplicationTests {
 
 }
 class CalculatorTest {
-	calculator = new Calculator();
+	private Calculator calculator = new Calculator();
 	@Test
 	void testSum() {
 		assertEquals(5, calculator.sum(2, 3));
