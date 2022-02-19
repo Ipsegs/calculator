@@ -11,3 +11,10 @@ class CalculatorApplicationTests {
 	}
 
 }
+class CalculatorTest {
+	private Calculator calculator = new Calculator();
+	@Test
+	void testSum() {
+		assertEquals(5, calculator.sum(2, 3));
+	}
+}
