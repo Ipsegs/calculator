@@ -1,2 +1,2 @@
 # calculator
-Demo to show how CI/CD works
+Demo to show how CI/CD works with jenkins
