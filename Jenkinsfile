@@ -1,5 +1,8 @@
 pipeline {
      agent any
+     triggers {
+          pollSCM('* * * * *')
+     }
      stages {
           stage("Compile") {
                steps {
@@ -17,5 +20,11 @@ pipeline {
                     sh "./gradlew jacocoTestCoverageVerification"
                }
           }
+          stage("Static code analysis") {
+               steps {
+                    sh "./gradlew checkstyleMain"
+               }
+          }
+
      }
 }
