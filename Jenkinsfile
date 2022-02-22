@@ -25,6 +25,31 @@ pipeline {
                     sh "./gradlew checkstyleMain"
                }
           }
+          stage("Package") {
+               steps {
+                    sh "./gradlew build"
+               }
+          }
 
+          stage("Docker build") {
+               steps {
+                    sh "docker build -t leszko/calculator:${BUILD_TIMESTAMP} ."
+               }
+          }
+
+          stage("Docker login") {
+               steps {
+                    withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: 'docker-hub-credentials',
+                               usernameVariable: 'ipsegs, passwordVariable: 'Melancholy99@']]) {
+                         sh "docker login --username $USERNAME --password $PASSWORD"
+                    }
+               }
+          }
+
+          stage("Docker push") {
+               steps {
+                    sh "docker push leszko/calculator:${BUILD_TIMESTAMP}"
+               }
+          }
      }
 }
