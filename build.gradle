@@ -4,6 +4,14 @@ plugins {
 	id 'java'
 }
 
+bootjar {
+          enabled = true
+}
+
+jar {
+      enabled = false
+}
+
 apply plugin: "jacoco"
 apply plugin: "checkstyle"
 group = 'com.ipsegs'
