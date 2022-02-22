@@ -4,10 +4,6 @@ plugins {
 	id 'java'
 }
 
-bootjar {
-          enabled = true
-}
-
 jar {
       enabled = false
 }
